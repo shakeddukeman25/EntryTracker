@@ -5,8 +5,8 @@ services:
     build: .
     container_name: flask-app
     environment:
-      - DB_HOST=${DB_HOST}    # change this when replacing MySQL contianer with another database
-      - DB_USER=${DB_USER}    # change this when replacing MySQL contianer with another database
+      - DB_HOST=${DB_HOST}    
+      - DB_USER=${DB_USER}    
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
     ports:
