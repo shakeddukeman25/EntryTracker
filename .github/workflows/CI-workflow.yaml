@@ -19,4 +19,11 @@ jobs:
           python app.py &
           sleep 5
       - name: unit test
-        run: curl localhost:5000
+        run: |
+          STATUS="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:80)"
+          if [ "$STATUS" = "200" ]; then
+            echo "Application is up!"
+          else
+            echo "Application returned $STATUS"
+            exit 1
+          fi
