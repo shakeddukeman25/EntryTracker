@@ -32,8 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-        docker compose up &
-        sleep 5
+          docker compose up &
+          sleep 5
       - name: unit test
         run: |
           STATUS="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000)"
