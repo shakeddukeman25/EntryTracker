@@ -48,7 +48,7 @@ jobs:
     needs: E2E
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t EntryTracker:latest .
+      - run: docker build -t entrytracker:latest .
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
