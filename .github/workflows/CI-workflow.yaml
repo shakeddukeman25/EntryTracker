@@ -73,5 +73,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/AWS-EntryTracker
+            docker compose down -v
             docker compose pull
             docker compose up -d
