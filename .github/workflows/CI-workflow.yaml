@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - main
+env:
+  PUBLIC_ECR: public.ecr.aws/p2o8u9e5
 jobs:
-  unit-test:
+  builder:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
