@@ -53,7 +53,7 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
       - name: Tag image
-        run: docker tag entrytracker:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/entrytracker:latest
+        run: docker tag development/entrytracker:latest public.ecr.aws/p2o8u9e5/development/entrytracker:latest
       - name: Push image
         run: |
           ECR_REGISTRY=$(aws sts get-caller-identity --query Account --output text).dkr.ecr.ap-south-1.amazonaws.com
