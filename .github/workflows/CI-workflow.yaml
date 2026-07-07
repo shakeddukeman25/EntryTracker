@@ -56,7 +56,7 @@ jobs:
       - run: |
           docker compose up &
           sleep 30
-      - name: unit test
+      - name: E2E test
         run: |
           STATUS="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:80)"
           if [ "$STATUS" = "200" ]; then
@@ -77,11 +77,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo docker compose down -v
-            cd /home/ubuntu/EntryTracker
-            cd ..
+            cd ~
             sudo rm -rf EntryTracker
-            git clone https://github.com/shakeddukeman25/EntryTracker.git
-            cd /home/ubuntu/EntryTracker
+            git clone https://github.com/shakeddukeman25/AWS-EntryTracker.git EntryTracker
+            cd EntryTracker
             sudo docker compose pull
             sudo docker compose up -d
       - name: verify
