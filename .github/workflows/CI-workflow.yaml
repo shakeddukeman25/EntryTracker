@@ -46,7 +46,7 @@ jobs:
       
   E2E:
     runs-on: ubuntu-latest
-    needs: unit-test
+    needs: builder
     steps:
       - uses: actions/checkout@v4
       - run: |
