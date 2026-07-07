@@ -15,7 +15,7 @@ services:
       - mysql
     networks:
       - "app-db"
-      - "nginx-test"
+      - "nginx-app"
     healthcheck:
       test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:5000')\""]
       interval: 10s
@@ -46,11 +46,11 @@ services:
       app:
         condition: service_healthy
     networks:
-      - "nginx-test"
+      - "nginx-app"
 networks:
   app-db:
     driver: bridge
-  nginx-test:
+  nginx-app:
     driver: bridge
 
 volumes:
