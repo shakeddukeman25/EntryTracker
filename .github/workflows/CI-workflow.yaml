@@ -79,7 +79,7 @@ jobs:
             cd ~
             if [ ! -d "EntryTracker/.git" ]; then
               rm -rf EntryTracker
-              git clone https://github.com/shakeddukeman25/AWS-EntryTracker.git EntryTracker
+              git clone https://github.com/shakeddukeman25/EntryTracker.git EntryTracker
             fi
             cd ~/EntryTracker
             git fetch origin main
