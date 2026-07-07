@@ -78,9 +78,11 @@ jobs:
           script: |
             cd ~
             cd EntryTracker || git clone https://github.com/shakeddukeman25/AWS-EntryTracker.git EntryTracker && cd EntryTracker
+            git fetch origin main
+            git reset --hard origin/main
             git pull origin main
             sudo docker rm -f $(sudo docker ps -aq) || true
-            sudo docker compose down -v || true
+            sudo docker compose down --remove-orphans || true
             sudo docker compose pull
             sudo docker compose up -d --force-recreate
       - name: verify
