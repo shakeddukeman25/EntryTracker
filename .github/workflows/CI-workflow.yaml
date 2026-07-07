@@ -77,10 +77,14 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ~
-            cd EntryTracker || git clone https://github.com/shakeddukeman25/AWS-EntryTracker.git EntryTracker && cd EntryTracker
+            if [ ! -d "EntryTracker/.git" ]; then
+              rm -rf EntryTracker
+              git clone https://github.com/shakeddukeman25/AWS-EntryTracker.git EntryTracker
+            fi
+            cd ~/EntryTracker
             git fetch origin main
             git reset --hard origin/main
-            git pull origin main
+            git clean -fd
             sudo docker rm -f $(sudo docker ps -aq) || true
             sudo docker compose down --remove-orphans || true
             sudo docker compose pull
