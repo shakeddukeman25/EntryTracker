@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: 451626663367.dkr.ecr.ap-south-1.amazonaws.com/development/entrytracker:latest
+    image: public.ecr.aws/p2o8u9e5/development/entrytracker:latest
     container_name: flask-app
     environment:
       - DB_HOST=${DB_HOST}    

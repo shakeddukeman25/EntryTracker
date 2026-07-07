@@ -57,7 +57,7 @@ jobs:
       - name: Push image
         run: |
           ECR_REGISTRY=$(aws sts get-caller-identity --query Account --output text).dkr.ecr.ap-south-1.amazonaws.com
-          docker push $ECR_REGISTRY/development/entrytracker:latest
+          docker push $ECR_REGISTRY/entrytracker:latest
   Deploy:
     runs-on: ubuntu-latest
     needs: E2E
