@@ -55,7 +55,9 @@ jobs:
       - name: Tag image
         run: docker tag entrytracker:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/entrytracker:latest
       - name: Push image
-        run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/entrytracker:latest
+        run: |
+          ECR_REGISTRY=$(aws sts get-caller-identity --query Account --output text).dkr.ecr.ap-south-1.amazonaws.com
+          docker push $ECR_REGISTRY/development/entrytracker:latest
   Deploy:
     runs-on: ubuntu-latest
     needs: E2E
